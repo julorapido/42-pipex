@@ -5,24 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 15:34:33 by jsaintho          #+#    #+#             */
-/*   Updated: 2024/06/20 15:37:14 by jsaintho         ###   ########.fr       */
+/*   Created: 2024/07/15 15:33:40 by jsaintho          #+#    #+#             */
+/*   Updated: 2024/07/15 15:33:56 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (!s1)
-		return (1);
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
-	}
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

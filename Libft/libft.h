@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 01:13:37 by julessainth       #+#    #+#             */
-/*   Updated: 2024/06/20 15:36:26 by jsaintho         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:30:38 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdint.h>
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+
+# ifndef BUFFER_SIZE
+#  define  BUFFER_SIZE 12
+# endif
 
 typedef struct s_list
 {
@@ -45,13 +52,16 @@ int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(const char *s1, const char *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *d, const char *s, size_t dstsize);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
-int		ft_strcmp(char *s1, char *s2);
+char	*get_next_line(int fd);
+char	*ft_strchr(const char *string, int searchedChar );
+long	ft_atoi_l(const char *str);
 
 /* additional functions */
 char	*ft_substr(char const *s, unsigned int start, size_t len);

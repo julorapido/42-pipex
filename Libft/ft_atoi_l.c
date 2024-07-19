@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi_l.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 15:45:35 by jsaintho          #+#    #+#             */
-/*   Updated: 2024/07/15 16:22:45 by jsaintho         ###   ########.fr       */
+/*   Created: 2024/07/15 17:27:51 by jsaintho          #+#    #+#             */
+/*   Updated: 2024/07/15 17:30:08 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *string, int searchedChar )
+long	ft_atoi_l(const char *str)
 {
-	char	*str;
+	long	i;
+	long	s;
+	long	res;
 
-	str = (char *)string;
-	while (*str != searchedChar && *str != 0)
-		str++;
-	if (*str == searchedChar)
-		return (str);
-	else
-		return (NULL);
+	i = 0;
+	s = 1;
+	res = 0;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			s = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = (res * 10) + (str[i] - '0');
+		i++;
+	}
+	return (res * s);
 }
